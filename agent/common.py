@@ -1,13 +1,31 @@
-
+from vllm import LLM, SamplingParams
 class AgentConfig:
-    def __init__(self,model_name,role,) -> None:
-        return
+    def __init__(self,model_name) -> None:
+        self.llm = LLM(
+            model=model_name,
+            tensor_parallel_size=1,
+            dtype="auto",
+        )
+        self.sampling_params = SamplingParams(
+            temperature=0.7,
+            top_p=0.9,
+            max_tokens=512,
+        )
     def get_response(self,messages):
-        return
+        prompt = ""
+        for msg in messages:
+            prompt += f"{msg['role']}: {msg['content']}\n"
+        prompt += "assistant: "
+
+        # 运行 vLLM 推理
+        outputs = self.llm.generate([prompt], sampling_params=self.sampling_params)
+        return outputs[0].outputs[0].text.strip()
 
 class ChatSession:
     def __init__(self,agent,mcp_client) -> None:
-        return
+        self.mcp_client = mcp_client
+        self.llm_client = agent
+        
     async def process_llm_response(self, llm_response: str) -> str:
         """处理LLM响应，解析工具调用并执行"""
         try:
