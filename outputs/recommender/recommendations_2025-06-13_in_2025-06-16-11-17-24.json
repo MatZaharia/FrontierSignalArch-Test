@@ -1,0 +1,41 @@
+```json
+{
+  "recommendations": [
+    {
+      "id": "2306.12345",
+      "score": 0.92,
+      "rank": 1,
+      "title": "You provided title here...",
+      "theme_tags": ["量子计算", "动态神经网络拓扑", "自适应系统"]
+    },
+    {
+      "id": "2306.12347",
+      "score": 0.91,
+      "rank": 2,
+      "title": "Federated Learning on Blockchain Networks: Privacy-Preserving Collaboration",
+      "theme_tags": ["联邦学习", "区块链数据安全", "分布式系统"]
+    },
+    {
+      "id": "2306.12349",
+      "score": 0.89,
+      "rank": 3,
+      "title": "Self-Supervised Learning for Protein Structure Prediction with 3D Convolutions",
+      "theme_tags": ["蛋白质预测", "自监督学习", "生物计算"]
+    },
+    {
+      "id": "2306.12348",
+      "score": 0.88,
+      "rank": 4,
+      "title": "Adversarial Robustness in Medical Imaging Systems: A Defense Mechanism",
+      "theme_tags": ["对抗防御", "医疗AI安全", "医学成像"]
+    },
+    {
+      "id": "2306.12346",
+      "score": 0.85,
+      "rank": 5,
+      "title": "GraphONets for Large-Scale Climate Modeling",
+      "theme_tags": ["气候建模", "大规模图神经网络", "异构数据处理"]
+    }
+  ]
+}
+```

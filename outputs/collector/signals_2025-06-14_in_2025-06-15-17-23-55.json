@@ -1,0 +1,23 @@
+[
+    {
+        "id": "arXiv:2306.12345",
+        "title": "Quantum Neural Networks for Drug Discovery",
+        "url": "https://arxiv.org/abs/2306.12345",
+        "source": "arxiv",
+        "timestamp": "2025-06-14T08:17:00Z"
+    },
+    {
+        "id": "arXiv:2306.67890",
+        "title": "Graph-based Recommender Systems at Scale",
+        "url": "https://arxiv.org/abs/2306.67890",
+        "source": "arxiv",
+        "timestamp": "2025-06-14T12:45:00Z"
+    },
+    {
+        "id": "arXiv:2306.23456",
+        "title": "Federated Learning with Differential Privacy Guarantees",
+        "url": "https://arxiv.org/abs/2306.23456",
+        "source": "arxiv",
+        "timestamp": "2025-06-14T17:30:00Z"
+    }
+]

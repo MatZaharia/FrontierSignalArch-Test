@@ -1,0 +1,26 @@
+[
+    {
+        "id": "2025.154321",
+        "title": "Quantum Neural Networks in High-Energy Physics Applications",
+        "url": "https://arxiv.org/abs/2025.154321",
+        "source": "arxiv",
+        "timestamp": "2025-06-15T14:30:00Z",
+        "raw_content": "We propose a novel quantum neural network architecture using entangled qubits to process LHC collision data..."
+    },
+    {
+        "id": "2025.167890",
+        "title": "Climate Modeling with Diffusion Probabilistic Models",
+        "url": "https://arxiv.org/abs/2025.167890",
+        "source": "arxiv",
+        "timestamp": "2025-06-15T09:45:33Z",
+        "raw_content": "This work applies diffusion models to simulate multi-decadal climate patterns with unprecedented spatial resolution..."
+    },
+    {
+        "id": "2025.178910",
+        "title": "Decentralized AI Marketplaces for Synthetic Data",
+        "url": "https://arxiv.org/abs/2025.178910",
+        "source": "arxiv",
+        "timestamp": "2025-06-15T16:22:44Z",
+        "raw_content": "We design a blockchain protocol allowing researchers to trade synthetic datasets using RLHF-generated content..."
+    }
+]

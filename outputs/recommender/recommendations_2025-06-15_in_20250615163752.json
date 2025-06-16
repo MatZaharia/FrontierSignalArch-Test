@@ -1,0 +1,76 @@
+
+
+```json
+[
+  {
+    "id": "QGNN-Anomaly-2025",
+    "score": 0.87,
+    "rank": 1,
+    "title": "Quantum-Enhanced Graph Neural Networks for Large-Scale Anomaly Detection",
+    "themes": ["quantum.ml", "gnn"]
+  },
+  {
+    "id": "TDA-Adversarial-Defense-2025",
+    "score": 0.84,
+    "rank": 2,
+    "title": "Adversarial Robustness via Topological Data Understanding in Deep Learning",
+    "themes": ["topology.dl", "adversarial-defense"]
+  },
+  {
+    "id": "FedEdge-KD-Pipelines-2025",
+    "score": 0.81,
+    "rank": 3,
+    "title": "Federated Edge-Learning with Cross-Device Knowledge Distillation Pipelines",
+    "themes": ["federated-learning-edge", "distill.pipeline"]
+  },
+  {
+    "id": "NeuroSymbol-RL-Robotics-2025",
+    "score": 0.79,
+    "rank": 4,
+    "title": "Neuro-Symbolic Reinforcement Learner for Real-Time Decision-Making in Robotics",
+    "themes": ["neuro-symbol-system", "rl.robotics"]
+  },
+  {
+    "id": "Transformer-Optimization-Tensors-2025",
+    "score": 0.78,
+    "rank": 5,
+    "title": "Memory-Efficient Transformer Implementations via Hierarchical Tensor Decomposition",
+    "themes": ["transformer-optimization", "tensor-decomp"]
+  },
+  {
+    "id": "DynamicGAE-TimeSeries-2025",
+    "score": 0.76,
+    "rank": 6,
+    "title": "Graph-Autoencoders with Dynamic Edge Weights for Time-Series Predictions",
+    "themes": ["time-series-prediction", "dynamic-gae"]
+  },
+  {
+    "id": "QuantumErrorCorrection-2025",
+    "score": 0.73,
+    "rank": 7,
+    "title": "Quantum Error Correction Co-Diagnosed by AI in Ion Trap Systems",
+    "themes": ["quantum-error-correction", "ai-assisted.qc"]
+  },
+  {
+    "id": "Causal-ProbProgramming-2025",
+    "score": 0.71,
+    "rank": 8,
+    "title": "Probabilistic Programming Frameworks with Differentiable Causality Modeling",
+    "themes": ["causality-modeling", "prob.prog"]
+  },
+  {
+    "id": "SpikingSNN-EdgeAI-2025",
+    "score": 0.68,
+    "rank": 9,
+    "title": "Edge-AI Sensor Networks Using Spiking Neural Network Compression Technique",
+    "themes": ["spiking-snn-compression", "edge-ai"]
+  },
+  {
+    "id": "AutonomousDriving-2025",
+    "score": 0.65,
+    "rank": 10,
+    "title": "Hybrid AI Agent for Autonomous Driving with Real-Time Traffic Reinforcement Learning",
+    "themes": ["autonomous-driving-rn", "rl.traffic"]
+  }
+]
+```

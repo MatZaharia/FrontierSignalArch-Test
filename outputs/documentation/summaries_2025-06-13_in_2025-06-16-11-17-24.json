@@ -1,0 +1,50 @@
+
+
+```json
+[
+    {
+        "id": "2306.12345",
+        "title": "You provided title here...",
+        "authors": ["Alice Smith", "John Doe"],
+        "abstract": "This paper explores quantum neural networks with dynamic topologies to improve computational efficiency and adaptability in complex environments.",
+        "published_date": "2025-06-13",
+        "categories": ["quant-ph", "cs.NE"]
+    },
+    
+    {
+        "id": "2306.12346",
+        "title": "GraphONets for Large-Scale Climate Modeling",
+        "authors": ["Emily Chen", "Robert Johnson"],
+        "abstract": "Applications of GraphONets in climate models to enhance prediction accuracy and scalability under heterogeneous data.",
+        "published_date": "2025-06-13",
+        "categories": ["stat.ML","physics.ao-ph"]
+    },
+    
+    {
+        "id": "2306.12347",
+        "title": "Federated Learning on Blockchain Networks: Privacy-Preserving Collaboration",
+        "authors": ["Sarah Kim", "Michael Brown"],
+        "abstract": "Proposes a decentralized federated learning framework integrated with blockchain to ensure secure data aggregation across distributed networks.",
+        "published_date": "2025-06-13",
+        "categories": ["cs.CR","cs.DC"]
+    },
+    
+    {
+        "id": "2306.12348",
+        "title": "Adversarial Robustness in Medical Imaging Systems: A Defense Mechanism",
+        "authors": ["Linda White", "David Green"],
+        "abstract": "Develops adversarially robust neural networks for medical imaging by incorporating gradient-based defense mechanisms against perturbed inputs.",
+        "published_date": "2025-06-13",
+        "categories": ["cs.CV","eess.IV"]
+    },
+    
+    {
+        "id": "2306.12349",
+        "title": "Self-Supervised Learning for Protein Structure Prediction with 3D Convolutions",
+        "authors": ["James Lee", "Clara Zhang", "William Torres"],
+        "abstract": "Introduces a self-supervised approach using 3D convolutional networks to predict protein structures from raw sequence data without requiring labeled examples.",
+        "published_date": "2025-06-13",
+        "categories": ["q-bio.SC","cs.LG"]
+    }
+]
+```

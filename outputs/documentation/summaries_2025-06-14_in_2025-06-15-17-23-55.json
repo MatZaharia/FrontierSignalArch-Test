@@ -1,0 +1,149 @@
+
+
+To standardize academic paper metadata into a uniform format (e.g., from arXiv), follow this **step-by-step process**, ensuring consistency, searchability, and reliability:
+
+---
+
+### **1. Author Normalization**  
+- **Input**: Raw author list (e.g., `["Maria García", "Dr. John Doe Smith"]`).  
+- **Processing Rules**:  
+  - Remove titles (**Dr**, Prof., etc.).  
+  - Split names into `first_name` and `last_name`:  
+    - *English/Space-Delimited*: Assume all parts except the last are first names (e.g., "John Doe Smith" → `first: John Doe`, `last: Smith`).  
+    - Non-Latin Names (*e.g.*, Chinese): Preserves full name if delimiter ambiguity exists. Example:  
+      `"李明"` → `{first_name: "", last_name: "李明"}`.  
+  - **Output Structure**:  
+  ```json
+  [
+    {"first_name": "Maria", "last_name": "García"},
+    {"first_name": "John Doe", "last_name": "Smith"}
+  ]
+  ```
+
+---
+
+### **2. Publication Date Formatting**  
+- **Input Forms**:  
+  - ArXiv ID format: `"arxiv_id": "2306.12345"` (extracts `YYYY-MM` from first 6 digits → `"2023-06-01"`).  
+  - Text-based dates (*e.g.*, "Jun 2023"): Convert to `YYYY-MM-01`.  
+  - Explicit dates (*e.g.*, "June 15, 2023"): Use day/month as-is → `"2023-06-15"`.  
+- **Output**: Always formatted as `YYYY-MM-DD`, with defaults for missing fields:  
+  ```json
+  {"publication_date": "2023-06-01"}
+  ```
+
+---
+
+### **3. Abstract/Summary Cleaning**  
+- **Input**: Raw abstract text (may include HTML tags or formatting).  
+- **Processing Rules**:  
+  - Remove markdown, LaTeX, or HTML tags using regex (e.g., `re.sub('<.*?>', '', text)` in Python).  
+  - Trim whitespace and ensure plain text output.  
+- **Output Example**:  
+  ```json
+  {"abstract": "This study investigates..."}
+  ```
+
+---
+
+### **4. Category List Conversion**  
+- **Input**: Comma-separated categories (*e.g.*, `"cs.CV, physics"` or a list `["math", "physics"]`).  
+- **Processing Rules**: Split on commas and remove leading/trailing whitespace.  
+- **Output**: Array format:  
+  ```json
+  {"categories": ["cs.CV", "physics"]}
+  ```
+
+---
+
+### **5. Validation & Error Handling**  
+- **Mandatory Fields Check**:  
+  - Every entry must have `id`, `title`, and `publication_date`.  
+  - Fill missing fields with placeholders (`null`) but log for review.  
+- **ID Normalization**: Ensure ArXiv IDs use format `"arXiv:2306.12345"`.  
+
+---
+
+### **6. URL Construction**  
+- Generate direct-access links via the ArXiv ID:  
+  ```python
+  base_url = "https://arxiv.org/abs/"
+  paper_id = "2306.12345"
+  full_url = f"{base_url}{paper_id}"
+  ```
+- **Output**:  
+  ```json
+  {"url": "https://arxiv.org/abs/2306.12345"}
+  ```
+
+---
+
+### **7. Toolchain & Example Code**  
+#### Python Libraries:  
+- `pandas` (for data handling).  
+- `dateutil.parser` (parse ambiguous date strings):  
+  ```python
+  from dateutil import parser
+  def standardize_date(raw_date):
+      parsed = parser.parse(raw_date, default=datetime(1900,1,1))
+      return parsed.strftime("%Y-%m-01") if parsed.day != 1 else parsed.strftime("%Y-%m-%d")
+  ```
+- `re` (regex for text cleaning).  
+
+#### Sample Workflow:  
+```python
+import pandas as pd
+
+def normalize_data(raw_df):
+    normalized = []
+    for _, row in raw_df.iterrows():
+        # Author processing example
+        authors = [
+            {
+                "first_name": " ".join(name.split()[:-1]),
+                "last_name": name.split()[-1]
+            }
+            for name in row["authors"]
+            if not any(title in name for title in ["Dr.", "Prof."])
+        ]
+        
+        # Date normalization
+        date_str = row.get("arxiv_id", "")[:6]  # Extract YYYYMM from ArXiv ID
+        publication_date = f"{date_str[:4]}-{date_str[4:6]}-01"
+        
+        normalized.append({
+            "id": row["arxiv_id"],
+            "title": row["title"].strip(),
+            "authors": authors,
+            "publication_date": publication_date,
+            # ... other fields
+        })
+    return pd.DataFrame(normalized)
+```
+
+---
+
+### **8. Final Structured Output Example**  
+```json
+{
+  "id": "arXiv:2306.12345",
+  "title": "Quantum Computing Innovations for ML Applications",
+  "authors": [
+    {"first_name": "Maria", "last_name": "García"},
+    {"first_name": "Samuel", "last_name": "Nguyen"}
+  ],
+  "publication_date": "2023-06-01",
+  "url": "https://arxiv.org/abs/2306.12345",
+  "categories": ["quant-ph", "cs.LG"],
+  "abstract": "This paper explores..."
+}
+```
+
+---
+
+### **Key Benefits**  
+- **Consistency**: Uniform structure enables automated analysis (e.g., citation networks).  
+- **Searchability**: Separated author names allow name-based queries.  
+- **Error Mitigation**: Placeholder defaults and logging keep data integrity during cleanup.  
+
+Use this framework to ensure all datasets align across platforms or analyses.
