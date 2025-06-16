@@ -4,7 +4,7 @@ from typing import List, Type, Any
 from pydantic import BaseModel, Field
 from crewai.tools import BaseTool 
 
-target_date=datetime.date(year=2025,month=6,day=12)
+target_date=datetime.date(year=2025,month=6,day=13)
 AI_CATEGORIES = ["cs.AI"]  # Add both categories
 client = arxiv.Client(page_size=100, delay_seconds=3)
 
