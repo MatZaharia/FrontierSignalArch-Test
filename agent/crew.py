@@ -1,7 +1,14 @@
 import os
+
 from .task import create_collector_task,create_metadata_task,create_documentation_task,create_recommender_task,create_report_task,create_profile_task
 from .agents import create_collector_agent,create_metadata_agent,create_documentation_agent,create_recommender_agent,create_report_agent,create_profile_agent
 from mcp.tools.collect import CollectFromArXivTool
+from mcp.tools.metadata import ExtractMetadataTool
+from mcp.tools.documentation import GenerateSummaryTool
+from mcp.tools.recommender import ScoreAndRecommendTool
+from mcp.tools.report import GenerateReportTool
+from mcp.tools.profile import UpdateProfileTool
+
 from crewai import LLM, Crew
 from dotenv import load_dotenv
 
@@ -29,13 +36,18 @@ def assemble_crew(target_date):
 
     
     arxiv_tool = CollectFromArXivTool()
+    metadata_tool = ExtractMetadataTool()
+    documentation_tool = GenerateSummaryTool()
+    recommender_tool = ScoreAndRecommendTool()
+    report_tool = GenerateReportTool()
+    profile_tool = UpdateProfileTool()
     
     collector_agent=create_collector_agent(llm=llm_test, tools=[arxiv_tool])
-    metadata_agent=create_metadata_agent(llm=llm_test, tools=[])
-    documentation_agent=create_documentation_agent(llm=llm_test, tools=[])
-    recommender_agent=create_recommender_agent(llm=llm_test, tools=[])
-    report_agent=create_report_agent(llm=llm_test, tools=[])
-    # profile_agent=create_profile_agent(llm=llm_test, tools=[])
+    metadata_agent=create_metadata_agent(llm=llm_test, tools=[metadata_tool])
+    documentation_agent=create_documentation_agent(llm=llm_test, tools=[documentation_tool])
+    recommender_agent=create_recommender_agent(llm=llm_test, tools=[recommender_tool])
+    report_agent=create_report_agent(llm=llm_test, tools=[report_tool])
+    # profile_agent=create_profile_agent(llm=llm_test, tools=[profile_tool])
     
     collector_task=create_collector_task(agent=collector_agent,target_date=target_date)
     metadata_task=create_metadata_task(agent=metadata_agent,context_task=collector_task,target_date=target_date)
