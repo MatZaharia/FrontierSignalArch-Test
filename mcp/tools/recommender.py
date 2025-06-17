@@ -7,8 +7,8 @@ class RecommendationInputSchema(BaseModel):
     summaries: List[dict] = Field(..., description="带 summary 的文献列表")
 
 class ScoreAndRecommendTool(BaseTool):
-    name = "score_and_recommend"
-    description = "对文献进行评分并生成 Top10 推荐列表"
+    name: str = "score_and_recommend"
+    description: str = "对文献进行评分并生成 Top10 推荐列表"
     args_schema: Type[BaseModel] = RecommendationInputSchema
 
     def _run(self, summaries: List[dict]) -> dict:
