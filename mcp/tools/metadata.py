@@ -4,14 +4,14 @@ from pydantic import BaseModel, Field
 from crewai.tools import BaseTool
 
 class MetadataInputSchema(BaseModel):
-    raw_signals: List[dict] = Field(..., description="Collector 输出的原始信号列表（每项为 dict）")
+    raw_signals: List[List[dict]] = Field(..., description="Collector输出的原始信号列表（列表中包含多个来源的列表，子列表每项为dict）")
 
 class ExtractMetadataTool(BaseTool):
-    name = "extract_metadata"
-    description = "从原始信号中提取并规范化元数据字段"
+    name: str = "extract_metadata"
+    description: str = "从原始信号中提取并规范化元数据字段"
     args_schema: Type[BaseModel] = MetadataInputSchema
 
-    def _run(self, raw_signals: List[dict]) -> List[dict]:
+    def _run(self, raw_signals: List[List[dict]]) -> List[dict]:
         results = []
         for s in raw_signals:
             results.append({
@@ -19,8 +19,8 @@ class ExtractMetadataTool(BaseTool):
                 "title": s.get("title"),
                 "authors": s.get("authors", []),
                 "abstract": s.get("abstract") or s.get("raw_content",""),
-                "published_date": s.get("timestamp", "")[:10],
-                "institution": s.get("institution", "unknown"),
-                "categories": s.get("categories", [])
+                "timestamp": s.get("timestamp", ""),
+                "categories": s.get("categories", []),
+                "url": s.get("url", []),
             })
         return results
