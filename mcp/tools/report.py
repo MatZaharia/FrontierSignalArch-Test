@@ -8,8 +8,8 @@ class ReportInputSchema(BaseModel):
     summaries: List[dict] = Field(..., description="文献摘要列表")
 
 class GenerateReportTool(BaseTool):
-    name = "generate_report"
-    description = "根据推荐和摘要生成 HTML/Markdown/飞书报告"
+    name: str = "generate_report"
+    description: str = "根据推荐和摘要生成 HTML/Markdown/飞书报告"
     args_schema: Type[BaseModel] = ReportInputSchema
 
     def _run(self, recommendations: dict, summaries: List[dict]) -> str:
