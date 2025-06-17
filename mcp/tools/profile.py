@@ -9,8 +9,8 @@ class ProfileInputSchema(BaseModel):
     recommendations: dict = Field(..., description="推荐列表")
 
 class UpdateProfileTool(BaseTool):
-    name = "update_user_profile"
-    description = "根据用户行为与推荐更新并保存用户画像"
+    name: str = "update_user_profile"
+    description: str = "根据用户行为与推荐更新并保存用户画像"
     args_schema: Type[BaseModel] = ProfileInputSchema
 
     def _run(self, user_events: List[dict], recommendations: dict) -> dict:
